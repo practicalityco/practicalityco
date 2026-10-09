@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Practicality Co.</title>
+<meta name="description" content="Practicality Co. Practical solutions for a neon world. Featuring Linkke, Model LNK-01, our openly-AI influencer.">
+<meta name="theme-color" content="#010006">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Practicality Co.">
+<meta property="og:title" content="Practicality Co.">
+<meta property="og:description" content="Practical solutions for a neon world. Featuring Linkke, Model LNK-01, AI influencer.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@humanvsmachinex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23010006'/%3E%3Cpath d='M14 14h8M14 14v8M50 14h-8M50 14v8M14 50h8M14 50v-8M50 50h-8M50 50v-8' stroke='%232ee6ff' stroke-width='3' fill='none'/%3E%3Cpath d='M32 45 20.5 33.6a7 7 0 0 1 9.9-9.9L32 25.3l1.6-1.6a7 7 0 0 1 9.9 9.9z' fill='%23ff3ea5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#010006; --ink:#ececf2; --mute:#9b9bad; --dim:#6c6c7e; --line:rgba(236,236,242,.12);
+  --pink:#ff3ea5; --cyan:#2ee6ff;
+  --sans:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","IBM Plex Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --pad:clamp(20px,4vw,56px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.label{font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+
+header .wrap,footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+header .wrap{height:72px}
+.word{display:inline-flex;align-items:center;gap:12px;font:700 14px/1 var(--sans);letter-spacing:.26em}
+.tagline{color:var(--dim)}
+
+main{flex:1;display:flex}
+.splash{position:relative;flex:1;display:flex;align-items:center;min-height:520px;max-height:min(780px,52vw);overflow:hidden}
+.hero{position:absolute;top:0;right:max(0px,calc((100vw - 1240px) / 2));height:100%;width:auto;max-width:none;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 97%,transparent 100%);
+          mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 97%,transparent 100%)}
+.copy{position:relative;z-index:1;max-width:520px}
+.copy .label{margin:0 0 24px}
+.copy .label span{color:var(--pink)}
+h1{margin:0;font:800 clamp(72px,9.4vw,148px)/.86 var(--sans);letter-spacing:-.055em}
+h1 i{font-style:normal;color:var(--pink)}
+.line{margin:24px 0 0;max-width:26ch;font-size:clamp(18px,1.6vw,21px);line-height:1.4;color:var(--mute)}
+.cta{display:inline-flex;align-items:center;gap:14px;margin-top:40px;padding:0 0 8px;border-bottom:1px solid var(--pink);font:600 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);transition:color .2s,gap .2s}
+.cta:hover{color:var(--pink);gap:20px}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{flex-wrap:wrap;padding-top:20px;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+footer a:hover{color:var(--pink)}
+.disc{color:var(--dim)}
+footer p{margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (prefers-reduced-motion:no-preference){
+  .copy,.hero{animation:in .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero{animation-delay:.1s}
+  @keyframes in{from{opacity:0}}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+@media (max-width:1100px){
+  .splash{flex-direction:column;align-items:stretch;min-height:0;max-height:none}
+  .hero{position:static;width:100%;height:auto;aspect-ratio:1/1;max-height:72svh;object-fit:cover;object-position:100% 50%;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 6%,#000 88%,transparent),linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent,#000 6%,#000 88%,transparent),linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-composite:intersect}
+  .copy{padding:8px 0 48px;max-width:none}
+}
+@media (max-width:760px){
+  header .wrap{height:60px}
+  .word{font-size:12.5px;letter-spacing:.22em}
+  .tagline{display:none}
+  .hero{aspect-ratio:4/5;max-height:none;object-position:91% 50%}
+  .copy{padding-top:4px;padding-bottom:40px}
+  .copy .label{margin-bottom:16px}
+  .cta{margin-top:28px}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:10px}
+  .meta{flex-direction:column}
+  .sep{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="word" href="./" aria-label="Practicality Co. home">
+      <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 6h12M6 6v12M58 6H46M58 6v12M6 58h12M6 58V46M58 58H46M58 58V46" stroke="#2ee6ff" stroke-width="4" fill="none"/><path d="M32 47 18.6 33.7a8.2 8.2 0 0 1 11.6-11.6L32 23.9l1.8-1.8a8.2 8.2 0 0 1 11.6 11.6z" fill="#ff3ea5"/></svg>
+      PRACTICALITY CO.
+    </a>
+    <span class="label tagline">Practical solutions for a neon world</span>
+  </div>
+</header>
+
+<main>
+  <section class="splash" aria-labelledby="t">
+    <img class="hero" src="assets/linkke-display-case.webp" width="1280" height="720" fetchpriority="high"
+         alt="Linkke, an anime-style AI idol with long pink twin pigtails and bright turquoise eyes with blue heart-shaped irises, smiling and making a peace sign inside a glowing cyan, tech-styled display-case frame. She wears a dark jacket with cyan circuit lines and a glowing pink heart on her chest.">
+    <div class="wrap">
+      <div class="copy">
+        <p class="label">Featured product <span>//</span> AI influencer <span>//</span> Model LNK-01</p>
+        <h1 id="t">Linkke<i aria-hidden="true">.</i></h1>
+        <p class="line">Our flagship AI influencer. Openly artificial. Fully operational.</p>
+        <a class="cta" href="linkkehub.html">Enter Linkke’s hub <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="label disc">Linkke is an AI. Her music is made with Suno. Art and copy are made with AI assistance.</p>
+    <p class="label meta"><a href="https://x.com/humanvsmachinex" target="_blank" rel="noopener">X @humanvsmachinex<span class="sr"> (opens in a new tab)</span></a><span class="sep" aria-hidden="true">·</span><span>© 2026 Practicality Co.</span></p>
+  </div>
+</footer>
+</body>
+</html>
