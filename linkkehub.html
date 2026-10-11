@@ -88,14 +88,6 @@ h2 i{font-style:normal;color:var(--pink)}
 .who.co{color:var(--cyan)} .who.me{color:var(--pink)}
 .faq .co-t{color:var(--mute)}
 
-/* plates */
-.plates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:960px}
-.plates figure{margin:0}
-.plates img{width:100%;border:1px solid var(--line)}
-.plates img{aspect-ratio:3/4;object-fit:cover;object-position:50% 40%}
-.plates figcaption{margin-top:10px;color:var(--dim)}
-.plates figure:nth-child(2) img{border:2px solid #3ff0ff;border-radius:6px;box-shadow:0 0 0 1px rgba(63,240,255,.35),0 0 12px rgba(63,240,255,.75),0 0 32px rgba(63,240,255,.4),inset 0 0 14px rgba(63,240,255,.35)}
-
 /* tune in */
 .tune{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
 .tune a{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);transition:color .2s,padding .25s}
@@ -152,7 +144,6 @@ footer a:hover{color:var(--pink)}
   .mv-frame{max-width:570px}
 }
 @media (max-width:600px){
-  .plates{gap:12px}
   header .wrap{height:60px}
   .word{font-size:12.5px;letter-spacing:.22em}
   .back .long{display:none}
@@ -281,24 +272,6 @@ footer a:hover{color:var(--pink)}
           <div class="a"><p class="co-t"><span class="who co">Practicality Co.</span>No. She is on schedule and extremely polite.</p>
           <p><span class="who me">LNK-01</span>I just want you to hear the chorus.</p></div></li>
       </ol>
-    </div>
-  </section>
-
-  <section class="s" aria-labelledby="plates-t">
-    <div class="wrap">
-      <div class="sh"><h2 id="plates-t">Plates<i>.</i></h2><span class="label">Original AI-generated art</span></div>
-      <div class="plates">
-        <figure>
-          <img src="assets/linkke-display-case-plate.webp" width="1080" height="1440" loading="lazy"
-               alt="Linkke smiling and making a peace sign inside a glowing cyan, tech-styled display-case frame on a near-black background.">
-          <figcaption class="label">Plate I. In the display case</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/linkke-singing-plate.webp" width="1080" height="1440" loading="lazy"
-               alt="Close-up of Linkke mid-song, smiling wide with bright turquoise eyes and blue heart-shaped irises, holding a glowing cyan microphone, with the pink neon heart glowing on her jacket.">
-          <figcaption class="label">Plate II. Mid-chorus</figcaption>
-        </figure>
-      </div>
     </div>
   </section>
 
