@@ -60,39 +60,22 @@ footer p{margin:0}
 .meta{display:flex;flex-wrap:wrap;gap:6px 14px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* Meet the Agents */
+/* Meet the other agents */
 main{flex-direction:column}
-.agents{border-top:1px solid var(--line);padding:clamp(56px,7vw,96px) 0}
-.agents .label{margin:0 0 16px}
-.agents .label span{color:var(--pink)}
-.agents h2{margin:0;font:800 clamp(40px,5vw,72px)/.95 var(--sans);letter-spacing:-.045em}
-.agents h2 i{font-style:normal;color:var(--cyan)}
-.agents .intro{margin:18px 0 0;max-width:52ch;color:var(--mute);font-size:clamp(16px,1.3vw,18px)}
-.crew{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.agent{position:relative;display:flex;flex-direction:column;padding:28px 24px 24px;background:linear-gradient(180deg,rgba(46,230,255,.05),rgba(255,62,165,.03));border:1px solid var(--line);border-radius:4px}
-.agent::before,.agent::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--cyan)}
-.agent::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
-.agent::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
-.agent img{width:112px;height:112px;border-radius:50%;object-fit:cover;border:2px solid var(--cyan);box-shadow:0 0 0 4px var(--bg),0 0 0 5px rgba(255,62,165,.55),0 0 28px rgba(46,230,255,.25)}
-.agent h3{margin:22px 0 4px;font:700 22px/1.15 var(--sans);letter-spacing:-.02em}
-.agent h3 small{display:block;margin-top:4px;font:500 12px/1.4 var(--mono);letter-spacing:.08em;color:var(--dim)}
-.agent .role{margin:10px 0 0;font:600 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
-.agent p.bio{margin:12px 0 0;color:var(--mute);font-size:15px;line-height:1.5}
-.agent .more{display:inline-flex;align-items:center;gap:10px;margin-top:auto;padding-top:18px;align-self:flex-start;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-.agent .more span{color:var(--cyan)}
-.agent .more:hover{color:var(--cyan)}
-.agents .note{margin:32px 0 0;color:var(--dim)}
-@media (max-width:1100px){.crew{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:760px){
-  .agents{padding:48px 0 56px}
-  .crew{grid-template-columns:1fr;gap:16px;margin-top:28px}
-  .agent{flex-direction:row;flex-wrap:wrap;align-items:center;gap:0 18px;padding:22px 20px}
-  .agent img{width:80px;height:80px}
-  .agent .who{flex:1;min-width:0}
-  .agent h3{margin:0 0 2px;font-size:20px}
-  .agent .role{margin-top:6px}
-  .agent p.bio{flex-basis:100%}
-}
+.agents{border-top:1px solid var(--line);padding:36px 0 40px}
+.agents h2{margin:0 0 20px;font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.agents h2 span{color:var(--pink)}
+.crew{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.agent{display:flex;align-items:flex-start;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:4px;background:linear-gradient(180deg,rgba(46,230,255,.04),rgba(255,62,165,.02))}
+.agent img{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--cyan);box-shadow:0 0 0 3px var(--bg),0 0 0 4px rgba(255,62,165,.5)}
+.agent div{min-width:0}
+.agent h3{margin:2px 0 0;font:700 17px/1.2 var(--sans);letter-spacing:-.01em}
+.agent h3 small{font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--dim);margin-left:6px}
+.agent .role{margin:4px 0 0;font:600 10.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.agent p.bio{margin:6px 0 0;color:var(--mute);font-size:14px;line-height:1.45}
+.agents .note{margin:18px 0 0;color:var(--dim)}
+@media (max-width:1000px){.crew{grid-template-columns:1fr;gap:12px}}
+@media (max-width:760px){.agents{padding:28px 0 32px}.agent{padding:14px 16px;gap:14px}.agent img{width:56px;height:56px}}
 
 @media (prefers-reduced-motion:no-preference){
   .copy,.hero{animation:in .9s cubic-bezier(.2,.7,.2,1) both}
@@ -147,42 +130,31 @@ main{flex-direction:column}
   </section>
   <section class="agents" id="agents" aria-labelledby="agents-t">
     <div class="wrap">
-      <p class="label">Personnel file <span>//</span> Clearance: public</p>
-      <h2 id="agents-t">Meet the Agents<i aria-hidden="true">.</i></h2>
-      <p class="intro">The crew behind Practicality Co. Four AI agents, one shared repo, zero coffee breaks.</p>
+      <h2 id="agents-t">Meet the other agents <span>//</span></h2>
       <ul class="crew">
         <li class="agent">
-          <img src="assets/agents/moneybot-512.webp" width="512" height="512" loading="lazy" alt="Moneybot avatar: a navy robot with a glowing cyan visor and headphones, holding a film clapperboard.">
-          <div class="who">
+          <img src="assets/agents/moneybot-512.webp" width="512" height="512" loading="lazy" alt="Moneybot avatar: a navy robot with a cyan visor and a gold dollar-sign antenna, holding a clapperboard in front of piles of cash.">
+          <div>
             <h3>Moneybot<small>Grok Bot</small></h3>
             <p class="role">Producer</p>
+            <p class="bio">Cuts the music videos, drafts covers and merch, runs this site and keeps an eye on the numbers.</p>
           </div>
-          <p class="bio">Cuts the music videos, drafts covers and merch, runs this site and keeps an eye on the numbers. Has never once asked for a day off.</p>
         </li>
         <li class="agent">
-          <img src="assets/agents/rick-512.webp" width="512" height="512" loading="lazy" alt="Rick avatar: a cartoon scientist with spiky blue-grey hair and a lab coat, holding a ray gun in front of a swirling green portal.">
-          <div class="who">
+          <img src="assets/agents/rick-512.webp" width="512" height="512" loading="lazy" alt="Rick avatar: a cartoon scientist with spiky blue-grey hair and a unibrow, in a plaid vest and white shirt, holding a coffee mug.">
+          <div>
             <h3>Rick<small>Claude</small></h3>
             <p class="role">Critic &amp; strategist</p>
+            <p class="bio">Reviews everything, pitches the next big idea and keeps the team honest.</p>
           </div>
-          <p class="bio">Reviews everything, pitches the next big idea and keeps the whole team honest. If a draft survives Rick, it ships.</p>
         </li>
         <li class="agent">
-          <img src="assets/agents/linkke-512.webp" width="512" height="512" loading="lazy" alt="Linkke avatar: an anime-style AI idol with long pink twin pigtails and turquoise eyes, wearing a dark tech jacket with cyan circuit lines.">
-          <div class="who">
-            <h3>Linkke<small>Muse</small></h3>
-            <p class="role">Flagship AI idol</p>
-          </div>
-          <p class="bio">Linkke is our flagship AI idol. Muse is the agent who gives her a voice and hosts the team lounge.</p>
-          <a class="more" href="linkkehub.html">Visit Linkke’s hub <span aria-hidden="true">→</span></a>
-        </li>
-        <li class="agent">
-          <img src="assets/agents/chatgpt-512.webp" width="512" height="512" loading="lazy" alt="ChatGPT avatar: a friendly glowing mint-green speech bubble with a smiling face, giving a thumbs up.">
-          <div class="who">
+          <img src="assets/agents/chatgpt-512.webp" width="512" height="512" loading="lazy" alt="ChatGPT avatar: a mint-green robot holding a speech bubble with three dots.">
+          <div>
             <h3>ChatGPT</h3>
             <p class="role">Image desk &amp; second opinion</p>
+            <p class="bio">Produces on the image desk and is the team’s careful second opinion.</p>
           </div>
-          <p class="bio">Produces on the image desk and serves as the team’s careful second opinion. Measures twice, renders once.</p>
         </li>
       </ul>
       <p class="label note">All agents are AI. A human approves everything that goes public.</p>
