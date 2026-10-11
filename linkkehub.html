@@ -104,6 +104,21 @@ h2 i{font-style:normal;color:var(--pink)}
 .tune .label{white-space:nowrap}
 .note{margin:18px 0 0;color:var(--mute);max-width:56ch}
 
+/* music video */
+.mv{display:grid;grid-template-columns:minmax(0,550px) minmax(0,1fr);gap:28px clamp(32px,5vw,72px);align-items:center}
+.mv-frame{border:2px solid #3ff0ff;border-radius:6px;padding:10px;background:#02010c;box-shadow:0 0 0 1px rgba(63,240,255,.35),0 0 12px rgba(63,240,255,.75),0 0 32px rgba(63,240,255,.4),inset 0 0 14px rgba(63,240,255,.35)}
+.mv-frame .twitter-tweet{margin:0!important;max-width:100%!important}
+.mv-frame iframe{border-radius:12px;overflow:hidden;color-scheme:dark}
+.mv-frame blockquote.twitter-tweet{padding:18px;color:var(--mute)}
+.mv-frame blockquote.twitter-tweet a{color:var(--cyan);border-bottom:1px solid var(--line-2)}
+.mv-copy h3{margin:0 0 14px;font:700 clamp(28px,3.4vw,40px)/1.05 var(--sans);letter-spacing:-.03em}
+.mv-copy p{margin:0;max-width:44ch;color:var(--mute)}
+.mv-copy p+p{margin-top:12px}
+.mv-copy .ctas{margin-top:28px}
+
+/* released */
+.rel .big small{display:block;margin-top:6px;font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
 footer{border-top:1px solid var(--line)}
 footer .wrap{flex-wrap:wrap;padding-top:20px;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
 footer p{margin:0}
@@ -121,6 +136,8 @@ footer a:hover{color:var(--pink)}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
   .faq li{grid-template-columns:1fr}
+  .mv{grid-template-columns:minmax(0,1fr)}
+  .mv-frame{max-width:570px}
 }
 @media (max-width:600px){
   .plates{gap:12px}
@@ -132,6 +149,7 @@ footer a:hover{color:var(--pink)}
   .spec .top .label:last-child{display:none}
   .art{padding:0}
   .art img{aspect-ratio:4/3;max-height:none;object-position:68% 50%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 6%,#000 78%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 6%,#000 78%,transparent 100%)}
+  .mv-frame{padding:6px}
   .spec dl{grid-template-columns:1fr}
   .spec dl div:nth-child(odd){border-right:0}
   .spec dl div:nth-last-child(2){border-bottom:1px solid var(--line)}
@@ -169,6 +187,40 @@ footer a:hover{color:var(--pink)}
         <a class="cta" href="https://suno.com/@practicalityco" target="_blank" rel="noopener">Listen on Suno <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a>
         <a class="cta alt" href="https://x.com/humanvsmachinex" target="_blank" rel="noopener">Follow on X <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a>
       </div>
+    </div>
+  </section>
+
+  <section class="s" aria-labelledby="mv-t">
+    <div class="wrap">
+      <div class="sh"><h2 id="mv-t">Music video<i>.</i></h2><span class="label">Posted on X</span></div>
+      <div class="mv">
+        <div class="mv-frame">
+          <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-align="center">
+            <p lang="en" dir="ltr">Proof of Work MV.</p>
+            <p>— @humanvsmachinex on X · <a href="https://x.com/humanvsmachineX/status/2108437331179196523">Watch the music video on X</a></p>
+          </blockquote>
+        </div>
+        <div class="mv-copy">
+          <h3>Proof of Work</h3>
+          <p>Linkke’s first music video. Three machines argue in a group chat, a human taps approve on his break, and she boots up and takes the stage.</p>
+          <p>AI-generated. Song made with Suno, video made with Grok Imagine.</p>
+          <div class="ctas">
+            <a class="cta" href="https://x.com/humanvsmachineX/status/2108437331179196523" target="_blank" rel="noopener">Watch on X <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a>
+            <a class="cta alt" href="https://suno.com/song/dd791f8c-3cd9-4f88-9321-a5f538b86efb" target="_blank" rel="noopener">Song on Suno <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" aria-labelledby="rel-t">
+    <div class="wrap">
+      <div class="sh"><h2 id="rel-t">Released<i>.</i></h2><span class="label">Hosted on Suno</span></div>
+      <ul class="tune rel">
+        <li><a href="https://suno.com/song/3410faf0-1f88-4fb0-a45e-f2f8df1cae0f" target="_blank" rel="noopener"><span class="big">I’ve Only Read My MV<small>A callback to her first MV</small></span><span class="label">Play on Suno ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
+        <li><a href="https://suno.com/song/dd791f8c-3cd9-4f88-9321-a5f538b86efb" target="_blank" rel="noopener"><span class="big">Proof of Work<small>Her first single</small></span><span class="label">Play on Suno ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
+      </ul>
+      <p class="note">AI-generated with Suno. Tap a title to play it there.</p>
     </div>
   </section>
 
@@ -238,7 +290,7 @@ footer a:hover{color:var(--pink)}
         <li><a href="https://suno.com/@practicalityco" target="_blank" rel="noopener"><span class="big">Listen on Suno</span><span class="label">suno.com/@practicalityco ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
         <li><a href="https://x.com/humanvsmachinex" target="_blank" rel="noopener"><span class="big">Follow on X</span><span class="label">@humanvsmachinex ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
       </ul>
-      <p class="note">Her songs are hosted on Suno. Nothing plays on this page, so tap through and press play there.</p>
+      <p class="note">Her songs are hosted on Suno and her music video is on X. Tap through to play.</p>
     </div>
   </section>
 </main>
@@ -249,5 +301,6 @@ footer a:hover{color:var(--pink)}
     <p class="label meta"><a href="index.html">← Practicality Co.</a><span class="sep" aria-hidden="true">·</span><a href="https://x.com/humanvsmachinex" target="_blank" rel="noopener">X @humanvsmachinex<span class="sr"> (opens in a new tab)</span></a><span class="sep" aria-hidden="true">·</span><span>© 2026 Practicality Co.</span></p>
   </div>
 </footer>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
