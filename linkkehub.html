@@ -109,8 +109,16 @@ h2 i{font-style:normal;color:var(--pink)}
 .mv-frame{border:2px solid #3ff0ff;border-radius:6px;padding:10px;background:#02010c;box-shadow:0 0 0 1px rgba(63,240,255,.35),0 0 12px rgba(63,240,255,.75),0 0 32px rgba(63,240,255,.4),inset 0 0 14px rgba(63,240,255,.35)}
 .mv-frame .twitter-tweet{margin:0!important;max-width:100%!important}
 .mv-frame iframe{border-radius:12px;overflow:hidden;color-scheme:dark}
-.mv-frame blockquote.twitter-tweet{padding:18px;color:var(--mute)}
-.mv-frame blockquote.twitter-tweet a{color:var(--cyan);border-bottom:1px solid var(--line-2)}
+.mv-frame blockquote.twitter-tweet{padding:0;color:var(--mute)}
+.mv-frame blockquote.twitter-tweet p{margin:12px 6px 0;font-size:15px}
+.mv-frame blockquote.twitter-tweet p+p{margin-top:4px;font:500 11px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.mv-frame blockquote.twitter-tweet p a{color:var(--cyan);border-bottom:1px solid var(--line-2)}
+.mv-poster{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:4px;background:#02010c}
+.mv-poster img{width:100%;height:100%;object-fit:cover}
+.mv-poster .play{position:absolute;right:5%;bottom:7%;width:clamp(48px,11vw,68px);aspect-ratio:1;border-radius:50%;background:rgba(1,0,6,.62);border:2px solid #3ff0ff;box-shadow:0 0 12px rgba(63,240,255,.7),inset 0 0 10px rgba(63,240,255,.35);transition:transform .2s,border-color .2s}
+.mv-poster .play::after{content:"";position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--ink)}
+.mv-poster:hover .play{transform:scale(1.08);border-color:var(--pink)}
+.mv-poster .ai{position:absolute;top:10px;right:10px;padding:3px 7px;border-radius:3px;background:rgba(1,0,6,.7);font:500 10px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .mv-copy h3{margin:0 0 14px;font:700 clamp(28px,3.4vw,40px)/1.05 var(--sans);letter-spacing:-.03em}
 .mv-copy p{margin:0;max-width:44ch;color:var(--mute)}
 .mv-copy p+p{margin-top:12px}
@@ -196,6 +204,13 @@ footer a:hover{color:var(--pink)}
       <div class="mv">
         <div class="mv-frame">
           <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-align="center">
+            <a class="mv-poster" href="https://x.com/humanvsmachineX/status/2108437331179196523">
+              <img src="assets/proof-of-work-poster.webp" width="1280" height="720" loading="lazy" decoding="async"
+                   alt="Still from the Proof of Work music video: Linkke, an anime-style AI idol with long pink pigtails, sings into a glowing cyan microphone and grins wide. Her turquoise eyes have navy heart-shaped pupils, and a pink neon heart glows on the chest of her navy tech jacket, against rainy, blurred neon city lights with a pink lightning-bolt sign.">
+              <span class="play" aria-hidden="true"></span>
+              <span class="ai">AI-generated</span>
+              <span class="sr"> Play the music video on X</span>
+            </a>
             <p lang="en" dir="ltr">Proof of Work MV.</p>
             <p>— @humanvsmachinex on X · <a href="https://x.com/humanvsmachineX/status/2108437331179196523">Watch the music video on X</a></p>
           </blockquote>
