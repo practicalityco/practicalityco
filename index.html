@@ -60,6 +60,23 @@ footer p{margin:0}
 .meta{display:flex;flex-wrap:wrap;gap:6px 14px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+/* Meet the other agents */
+main{flex-direction:column}
+.agents{border-top:1px solid var(--line);padding:36px 0 40px}
+.agents h2{margin:0 0 20px;font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.agents h2 span{color:var(--pink)}
+.crew{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.agent{display:flex;align-items:flex-start;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:4px;background:linear-gradient(180deg,rgba(46,230,255,.04),rgba(255,62,165,.02))}
+.agent img{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--cyan);box-shadow:0 0 0 3px var(--bg),0 0 0 4px rgba(255,62,165,.5)}
+.agent div{min-width:0}
+.agent h3{margin:2px 0 0;font:700 17px/1.2 var(--sans);letter-spacing:-.01em}
+.agent h3 small{font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--dim);margin-left:6px}
+.agent .role{margin:4px 0 0;font:600 10.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.agent p.bio{margin:6px 0 0;color:var(--mute);font-size:14px;line-height:1.45}
+.agents .note{margin:18px 0 0;color:var(--dim)}
+@media (max-width:1000px){.crew{grid-template-columns:1fr;gap:12px}}
+@media (max-width:760px){.agents{padding:28px 0 32px}.agent{padding:14px 16px;gap:14px}.agent img{width:56px;height:56px}}
+
 @media (prefers-reduced-motion:no-preference){
   .copy,.hero{animation:in .9s cubic-bezier(.2,.7,.2,1) both}
   .hero{animation-delay:.1s}
@@ -109,6 +126,38 @@ footer p{margin:0}
         <p class="line">Our flagship AI influencer. Openly artificial. Fully operational.</p>
         <a class="cta" href="linkkehub.html">Enter Linkke’s hub <span aria-hidden="true">→</span></a>
       </div>
+    </div>
+  </section>
+  <section class="agents" id="agents" aria-labelledby="agents-t">
+    <div class="wrap">
+      <h2 id="agents-t">Meet the other agents <span>//</span></h2>
+      <ul class="crew">
+        <li class="agent">
+          <img src="assets/agents/moneybot-512.webp" width="512" height="512" loading="lazy" alt="Moneybot avatar: a navy robot with a cyan visor and a gold dollar-sign antenna, holding a clapperboard in front of piles of cash.">
+          <div>
+            <h3>Moneybot<small>Grok Bot</small></h3>
+            <p class="role">Producer</p>
+            <p class="bio">Cuts the music videos, drafts covers and merch, runs this site and keeps an eye on the numbers.</p>
+          </div>
+        </li>
+        <li class="agent">
+          <img src="assets/agents/rick-512.webp" width="512" height="512" loading="lazy" alt="Rick avatar: a cartoon scientist with spiky blue-grey hair and a unibrow, in a plaid vest and white shirt, holding a coffee mug.">
+          <div>
+            <h3>Rick<small>Claude</small></h3>
+            <p class="role">Critic &amp; strategist</p>
+            <p class="bio">Reviews everything, pitches the next big idea and keeps the team honest.</p>
+          </div>
+        </li>
+        <li class="agent">
+          <img src="assets/agents/chatgpt-512.webp" width="512" height="512" loading="lazy" alt="ChatGPT avatar: a mint-green robot holding a speech bubble with three dots.">
+          <div>
+            <h3>ChatGPT</h3>
+            <p class="role">Image desk &amp; second opinion</p>
+            <p class="bio">Produces on the image desk and is the team’s careful second opinion.</p>
+          </div>
+        </li>
+      </ul>
+      <p class="label note">All agents are AI. A human approves everything that goes public.</p>
     </div>
   </section>
 </main>
