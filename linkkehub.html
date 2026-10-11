@@ -115,16 +115,20 @@ h2 i{font-style:normal;color:var(--pink)}
 .mv-frame blockquote.twitter-tweet p a{color:var(--cyan);border-bottom:1px solid var(--line-2)}
 .mv-poster{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:4px;background:#02010c}
 .mv-poster img{width:100%;height:100%;object-fit:cover}
-.mv-poster .play{position:absolute;right:5%;bottom:7%;width:clamp(48px,11vw,68px);aspect-ratio:1;border-radius:50%;background:rgba(1,0,6,.62);border:2px solid #3ff0ff;box-shadow:0 0 12px rgba(63,240,255,.7),inset 0 0 10px rgba(63,240,255,.35);transition:transform .2s,border-color .2s}
+.mv-poster .play{position:absolute;right:10.94%;top:50%;transform:translate(50%,-50%);width:clamp(48px,11vw,68px);aspect-ratio:1;border-radius:50%;background:rgba(1,0,6,.62);border:2px solid #3ff0ff;box-shadow:0 0 12px rgba(63,240,255,.7),inset 0 0 10px rgba(63,240,255,.35);transition:transform .2s,border-color .2s}
 .mv-poster .play::after{content:"";position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--ink)}
-.mv-poster:hover .play{transform:scale(1.08);border-color:var(--pink)}
-.mv-poster .ai{position:absolute;top:10px;right:10px;padding:3px 7px;border-radius:3px;background:rgba(1,0,6,.7);font:500 10px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.mv-poster:hover .play{transform:translate(50%,-50%) scale(1.08);border-color:var(--pink)}
+.mv-poster .ai{position:absolute;top:8px;right:8px;padding:3px 7px;border-radius:3px;background:rgba(1,0,6,.7);font:500 10px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .mv-copy h3{margin:0 0 14px;font:700 clamp(28px,3.4vw,40px)/1.05 var(--sans);letter-spacing:-.03em}
 .mv-copy p{margin:0;max-width:44ch;color:var(--mute)}
 .mv-copy p+p{margin-top:12px}
 .mv-copy .ctas{margin-top:28px}
 
 /* released */
+.rel a{justify-content:flex-start}
+.rel .label{margin-left:auto}
+.rel .thumb{flex:none;width:clamp(56px,7vw,84px);aspect-ratio:1;object-fit:cover;border:2px solid #3ff0ff;border-radius:6px;box-shadow:0 0 0 1px rgba(63,240,255,.35),0 0 10px rgba(63,240,255,.6),0 0 22px rgba(63,240,255,.3);transition:border-color .2s,box-shadow .2s}
+.rel a:hover .thumb{border-color:var(--pink);box-shadow:0 0 0 1px rgba(255,62,165,.35),0 0 10px rgba(255,62,165,.6),0 0 22px rgba(255,62,165,.3)}
 .rel .big small{display:block;margin-top:6px;font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
 
 footer{border-top:1px solid var(--line)}
@@ -205,8 +209,8 @@ footer a:hover{color:var(--pink)}
         <div class="mv-frame">
           <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-align="center">
             <a class="mv-poster" href="https://x.com/humanvsmachineX/status/2108437331179196523">
-              <img src="assets/proof-of-work-poster.webp" width="1280" height="720" loading="lazy" decoding="async"
-                   alt="Still from the Proof of Work music video: Linkke, an anime-style AI idol with long pink pigtails, sings into a glowing cyan microphone and grins wide. Her turquoise eyes have navy heart-shaped pupils, and a pink neon heart glows on the chest of her navy tech jacket, against rainy, blurred neon city lights with a pink lightning-bolt sign.">
+              <img src="assets/proof-of-work-cover-poster.webp" width="1280" height="720" loading="lazy" decoding="async"
+                   alt="Cover art for Proof of Work: Linkke, an anime-style AI idol with long pink pigtails and turquoise eyes, sings into a pink microphone and reaches one gloved hand toward the viewer on a neon concert stage with a glowing pink heart on her navy jacket. The cover reads LINKKE at the top, PROOF OF WORK in large glitchy letters, and PRACTICALITY CO. at the bottom.">
               <span class="play" aria-hidden="true"></span>
               <span class="ai">AI-generated</span>
               <span class="sr"> Play the music video on X</span>
@@ -232,8 +236,8 @@ footer a:hover{color:var(--pink)}
     <div class="wrap">
       <div class="sh"><h2 id="rel-t">Released<i>.</i></h2><span class="label">Hosted on Suno</span></div>
       <ul class="tune rel">
-        <li><a href="https://suno.com/song/3410faf0-1f88-4fb0-a45e-f2f8df1cae0f" target="_blank" rel="noopener"><span class="big">I’ve Only Read My MV<small>A callback to her first MV</small></span><span class="label">Play on Suno ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
-        <li><a href="https://suno.com/song/dd791f8c-3cd9-4f88-9321-a5f538b86efb" target="_blank" rel="noopener"><span class="big">Proof of Work<small>Her first single</small></span><span class="label">Play on Suno ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
+        <li><a href="https://suno.com/song/3410faf0-1f88-4fb0-a45e-f2f8df1cae0f" target="_blank" rel="noopener"><img class="thumb" src="assets/ive-only-read-my-mv-cover-400.webp" width="400" height="400" loading="lazy" decoding="async" alt="Cover art for I’ve Only Read My MV: Linkke, an anime-style AI idol with long pink pigtails and turquoise eyes, sits cross-legged in black thigh-highs and chunky boots, chin on her hand, holding a glowing tablet. Little drones with heart eyes float nearby and screens around her show images of her. The cover reads “I’ve only read my MV” in pink and white letters, with “Linkke” underneath."><span class="big">I’ve Only Read My MV<small>A callback to her first MV</small></span><span class="label">Play on Suno ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
+        <li><a href="https://suno.com/song/dd791f8c-3cd9-4f88-9321-a5f538b86efb" target="_blank" rel="noopener"><img class="thumb" src="assets/proof-of-work-cover-400.webp" width="400" height="400" loading="lazy" decoding="async" alt="Cover art for Proof of Work: Linkke, an anime-style AI idol with long pink pigtails and turquoise eyes, sings into a pink microphone and reaches one gloved hand toward the viewer on a neon concert stage with a glowing pink heart on her navy jacket. The cover reads LINKKE at the top, PROOF OF WORK in large glitchy letters, and PRACTICALITY CO. at the bottom."><span class="big">Proof of Work<small>Her first single</small></span><span class="label">Play on Suno ↗</span><span class="sr"> (opens in a new tab)</span></a></li>
       </ul>
       <p class="note">AI-generated with Suno. Tap a title to play it there.</p>
     </div>
