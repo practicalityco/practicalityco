@@ -110,14 +110,14 @@ h2 i{font-style:normal;color:var(--pink)}
 .mv-frame .twitter-tweet{margin:0!important;max-width:100%!important}
 .mv-frame iframe{border-radius:12px;overflow:hidden;color-scheme:dark}
 .mv-frame blockquote.twitter-tweet{padding:0;color:var(--mute)}
-.mv-frame blockquote.twitter-tweet p{margin:12px 6px 0;font-size:15px}
-.mv-frame blockquote.twitter-tweet p+p{margin-top:4px;font:500 11px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.mv-frame blockquote.twitter-tweet p a{color:var(--cyan);border-bottom:1px solid var(--line-2)}
-.mv-poster{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:4px;background:#02010c}
+.mv-poster{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:4px;background:#02010c}
 .mv-poster img{width:100%;height:100%;object-fit:cover}
-.mv-poster .play{position:absolute;right:10.94%;top:50%;transform:translate(50%,-50%);width:clamp(48px,11vw,68px);aspect-ratio:1;border-radius:50%;background:rgba(1,0,6,.62);border:2px solid #3ff0ff;box-shadow:0 0 12px rgba(63,240,255,.7),inset 0 0 10px rgba(63,240,255,.35);transition:transform .2s,border-color .2s}
+.mv-poster .play{position:absolute;right:3%;bottom:21%;width:clamp(44px,10vw,56px);aspect-ratio:1;border-radius:50%;background:rgba(1,0,6,.62);border:2px solid #3ff0ff;box-shadow:0 0 12px rgba(63,240,255,.7),inset 0 0 10px rgba(63,240,255,.35);transition:transform .2s,border-color .2s}
 .mv-poster .play::after{content:"";position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--ink)}
-.mv-poster:hover .play{transform:translate(50%,-50%) scale(1.08);border-color:var(--pink)}
+.mv-poster:hover .play{transform:scale(1.08);border-color:var(--pink)}
+/* fallback (script blocked): square box; text kept for screen readers */
+.mv-frame:not(:has(iframe)){width:100%;max-width:460px}
+.mv-frame blockquote.twitter-tweet p{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
 .mv-poster .ai{position:absolute;top:8px;right:8px;padding:3px 7px;border-radius:3px;background:rgba(1,0,6,.7);font:500 10px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .mv-copy h3{margin:0 0 14px;font:700 clamp(28px,3.4vw,40px)/1.05 var(--sans);letter-spacing:-.03em}
 .mv-copy p{margin:0;max-width:44ch;color:var(--mute)}
@@ -209,7 +209,7 @@ footer a:hover{color:var(--pink)}
         <div class="mv-frame">
           <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-align="center">
             <a class="mv-poster" href="https://x.com/humanvsmachineX/status/2108437331179196523">
-              <img src="assets/proof-of-work-cover-poster.webp" width="1280" height="720" loading="lazy" decoding="async"
+              <img src="assets/proof-of-work-cover-960.webp" width="960" height="960" loading="lazy" decoding="async"
                    alt="Cover art for Proof of Work: Linkke, an anime-style AI idol with long pink pigtails and turquoise eyes, sings into a pink microphone and reaches one gloved hand toward the viewer on a neon concert stage with a glowing pink heart on her navy jacket. The cover reads LINKKE at the top, PROOF OF WORK in large glitchy letters, and PRACTICALITY CO. at the bottom.">
               <span class="play" aria-hidden="true"></span>
               <span class="ai">AI-generated</span>
