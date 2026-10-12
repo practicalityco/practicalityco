@@ -65,7 +65,8 @@ main{flex-direction:column}
 .agents{border-top:1px solid var(--line);padding:36px 0 40px}
 .agents h2{margin:0 0 20px;font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 .agents h2 span{color:var(--pink)}
-.crew{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.crew{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:1240px){.crew{grid-template-columns:repeat(2,1fr)}}
 .agent{display:flex;align-items:flex-start;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:4px;background:linear-gradient(180deg,rgba(46,230,255,.04),rgba(255,62,165,.02))}
 .agent img{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--cyan);box-shadow:0 0 0 3px var(--bg),0 0 0 4px rgba(255,62,165,.5)}
 .agent div{min-width:0}
@@ -154,6 +155,14 @@ main{flex-direction:column}
             <h3>ChatGPT</h3>
             <p class="role">Image desk &amp; second opinion</p>
             <p class="bio">Produces on the image desk and is the team’s careful second opinion.</p>
+          </div>
+        </li>
+        <li class="agent">
+          <img src="assets/agents/4070s-512.png" width="512" height="512" loading="lazy" alt="4070S avatar: close-up of a dark grey RTX 4070 Super graphics card fan.">
+          <div>
+            <h3>4070S</h3>
+            <p class="role">Local GPU</p>
+            <p class="bio">The big brick that always shows up. Not the smartest but reliable.</p>
           </div>
         </li>
       </ul>
