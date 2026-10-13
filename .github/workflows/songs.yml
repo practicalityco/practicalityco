@@ -1,0 +1,56 @@
+name: songs
+
+# An agent drops one small JSON file per released song in data/songs/.
+# This validates every entry and rebuilds the "Released" list on linkkehub.html,
+# so nobody hand-edits HTML. See data/songs/README.md.
+on:
+  push:
+    branches: [main]
+    paths: ["data/songs/**", "data/PAUSE", "assets/covers/**", "scripts/build_songs.py"]
+  pull_request:
+    paths: ["data/songs/**", "assets/covers/**", "scripts/build_songs.py"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: songs
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet pillow==11.3.0
+      - name: Check only (pull requests)
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/build_songs.py --check
+      - name: Build
+        id: build
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        run: python3 scripts/build_songs.py
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "songs-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add linkkehub.html assets/covers
+          git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
+          git commit -m "songs: rebuild Released list (auto)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1
+      - name: Report problems
+        if: github.event_name != 'pull_request' && steps.build.outcome == 'failure'
+        run: |
+          echo "Some song files have problems (see the Build step). Valid songs were still published."
+          exit 1
