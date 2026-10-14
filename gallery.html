@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gallery — Linkke · Practicality Co.</title>
+<meta name="description" content="Image gallery: Linkke, Model LNK-01, Practicality Co.'s openly-AI virtual idol. Song covers and artwork, made with AI assistance.">
+<meta name="theme-color" content="#010006">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Practicality Co.">
+<meta property="og:title" content="Linkke // Gallery">
+<meta property="og:description" content="Song covers and artwork. Openly artificial.">
+<meta property="og:image" content="https://practicalityco.github.io/practicalityco/assets/gallery/willpower-400.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://practicalityco.github.io/practicalityco/gallery.html">
+<meta name="twitter:site" content="@humanvsmachinex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23010006'/%3E%3Cpath d='M14 14h8M14 14v8M50 14h-8M50 14v8M14 50h8M14 50v-8M50 50h-8M50 50v-8' stroke='%232ee6ff' stroke-width='3' fill='none'/%3E%3Cpath d='M32 45 20.5 33.6a7 7 0 0 1 9.9-9.9L32 25.3l1.6-1.6a7 7 0 0 1 9.9 9.9z' fill='%23ff3ea5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#010006; --ink:#ececf2; --mute:#9b9bad; --dim:#6c6c7e; --line:rgba(236,236,242,.12); --line-2:rgba(236,236,242,.22);
+  --pink:#ff3ea5; --cyan:#2ee6ff;
+  --sans:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","IBM Plex Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --pad:clamp(20px,4vw,56px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.label{font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+header .wrap,footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+header .wrap{height:72px}
+.word{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;font:700 14px/1 var(--sans);letter-spacing:.26em}
+.back{color:var(--mute);white-space:nowrap;transition:color .2s}
+.back .short{display:none}
+.back:hover{color:var(--pink)}
+
+/* hero */
+.art{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.art img{width:100%;aspect-ratio:16/9;max-height:76svh;object-fit:cover;object-position:60% 40%;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 8%,#000 72%,transparent 100%),linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 8%,#000 72%,transparent 100%),linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%);
+  mask-composite:intersect}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(32px,6vw,96px);align-items:end;padding-top:clamp(8px,1.5vw,20px);padding-bottom:clamp(56px,7vw,104px)}
+.hero .label{margin:0 0 24px}
+.hero .label span,.k{color:var(--pink)}
+h1{margin:0;font:800 clamp(72px,9.4vw,148px)/.86 var(--sans);letter-spacing:-.055em}
+h1 i{font-style:normal;color:var(--pink)}
+.voice{margin:0;max-width:30ch;font-size:clamp(19px,1.8vw,23px);line-height:1.4;color:var(--ink)}
+.voice small{display:block;margin-top:10px;font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.ctas{display:flex;flex-wrap:wrap;gap:14px 32px;margin-top:32px}
+.cta{display:inline-flex;align-items:center;gap:14px;padding:0 0 8px;border-bottom:1px solid var(--pink);font:600 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;transition:color .2s,gap .2s}
+.cta.alt{border-color:var(--line-2)}
+.cta:hover{color:var(--pink);gap:20px}
+
+/* sections */
+section.s{border-top:1px solid var(--line);padding:clamp(64px,8vw,112px) 0}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(28px,4vw,48px)}
+h2{margin:0;font:700 clamp(34px,4.6vw,56px)/1 var(--sans);letter-spacing:-.04em}
+h2 i{font-style:normal;color:var(--pink)}
+
+/* spec card */
+.spec{border:1px solid var(--line-2);max-width:880px}
+.spec .top,.spec .bot{display:flex;justify-content:space-between;gap:12px;padding:12px 18px}
+.spec .top{border-bottom:1px solid var(--line-2)}
+.spec .bot{border-top:1px solid var(--line-2);color:var(--dim)}
+.spec dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.spec dl div{padding:16px 18px;border-bottom:1px solid var(--line)}
+.spec dl div:nth-child(odd){border-right:1px solid var(--line)}
+.spec dl div:nth-last-child(-n+2){border-bottom:0}
+.spec dt{font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.spec dd{margin:4px 0 0;font-size:17px;line-height:1.4}
+
+/* faq */
+.faq{margin:0;padding:0;list-style:none;border-top:1px solid var(--line-2)}
+.faq li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:16px 48px;padding:28px 0;border-bottom:1px solid var(--line)}
+.faq h3{margin:0;font:600 clamp(21px,2vw,26px)/1.2 var(--sans);letter-spacing:-.02em}
+.faq .a p{margin:0;max-width:52ch}
+.faq .a p+p{margin-top:14px}
+.faq .who{display:block;margin-bottom:3px;font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.who.co{color:var(--cyan)} .who.me{color:var(--pink)}
+.faq .co-t{color:var(--mute)}
+
+/* tune in */
+.tune{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
+.tune a{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);transition:color .2s,padding .25s}
+.tune a:hover{color:var(--pink);padding-left:8px}
+.tune .big{font:700 clamp(24px,3.4vw,40px)/1.1 var(--sans);letter-spacing:-.03em}
+.tune .label{white-space:nowrap}
+.note{margin:18px 0 0;color:var(--mute);max-width:56ch}
+
+/* music video */
+.mv{display:grid;grid-template-columns:minmax(0,550px) minmax(0,1fr);gap:28px clamp(32px,5vw,72px);align-items:center}
+.mv-frame{border:2px solid #3ff0ff;border-radius:6px;padding:10px;background:#02010c;box-shadow:0 0 0 1px rgba(63,240,255,.35),0 0 12px rgba(63,240,255,.75),0 0 32px rgba(63,240,255,.4),inset 0 0 14px rgba(63,240,255,.35)}
+.mv-frame .twitter-tweet{margin:0!important;max-width:100%!important}
+.mv-frame iframe{border-radius:12px;overflow:hidden;color-scheme:dark}
+.mv-frame blockquote.twitter-tweet{padding:0;color:var(--mute)}
+.mv-poster{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:4px;background:#02010c}
+.mv-poster img{width:100%;height:100%;object-fit:cover}
+.mv-poster .play{position:absolute;right:3%;bottom:21%;width:clamp(44px,10vw,56px);aspect-ratio:1;border-radius:50%;background:rgba(1,0,6,.62);border:2px solid #3ff0ff;box-shadow:0 0 12px rgba(63,240,255,.7),inset 0 0 10px rgba(63,240,255,.35);transition:transform .2s,border-color .2s}
+.mv-poster .play::after{content:"";position:absolute;left:54%;top:50%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--ink)}
+.mv-poster:hover .play{transform:scale(1.08);border-color:var(--pink)}
+/* fallback (script blocked): square box; text kept for screen readers */
+.mv-frame:not(:has(iframe)){width:100%;max-width:460px}
+.mv-frame blockquote.twitter-tweet p{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+.mv-poster .ai{position:absolute;top:8px;right:8px;padding:3px 7px;border-radius:3px;background:rgba(1,0,6,.7);font:500 10px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.mv-copy h3{margin:0 0 14px;font:700 clamp(28px,3.4vw,40px)/1.05 var(--sans);letter-spacing:-.03em}
+.mv-copy p{margin:0;max-width:44ch;color:var(--mute)}
+.mv-copy p+p{margin-top:12px}
+.mv-copy .ctas{margin-top:28px}
+
+/* released */
+.rel a{justify-content:flex-start}
+.rel .label{margin-left:auto}
+.rel .thumb{flex:none;width:clamp(56px,7vw,84px);aspect-ratio:1;object-fit:cover;border:2px solid #3ff0ff;border-radius:6px;box-shadow:0 0 0 1px rgba(63,240,255,.35),0 0 10px rgba(63,240,255,.6),0 0 22px rgba(63,240,255,.3);transition:border-color .2s,box-shadow .2s}
+.rel a:hover .thumb{border-color:var(--pink);box-shadow:0 0 0 1px rgba(255,62,165,.35),0 0 10px rgba(255,62,165,.6),0 0 22px rgba(255,62,165,.3)}
+.rel .big small{display:block;margin-top:6px;font:500 11px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{flex-wrap:wrap;padding-top:20px;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+footer p{margin:0}
+footer a:hover{color:var(--pink)}
+.disc{color:var(--dim)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px}
+
+@media (prefers-reduced-motion:no-preference){
+  .art,.hero > *{animation:in .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero > *:last-child{animation-delay:.1s}
+  @keyframes in{from{opacity:0}}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .faq li{grid-template-columns:1fr}
+  .mv{grid-template-columns:minmax(0,1fr)}
+  .mv-frame{max-width:570px}
+}
+@media (max-width:600px){
+  header .wrap{height:60px}
+  .word{font-size:12.5px;letter-spacing:.22em}
+  .back .long{display:none}
+  .back .short{display:inline}
+  .sh .label{display:none}
+  .spec .top .label:last-child{display:none}
+  .art{padding:0}
+  .art img{aspect-ratio:4/3;max-height:none;object-position:68% 50%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 6%,#000 78%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 6%,#000 78%,transparent 100%)}
+  .mv-frame{padding:6px}
+  .spec dl{grid-template-columns:1fr}
+  .spec dl div:nth-child(odd){border-right:0}
+  .spec dl div:nth-last-child(2){border-bottom:1px solid var(--line)}
+  .tune .label{display:none}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:10px}
+  .meta{flex-direction:column}
+  .sep{display:none}
+}
+
+/* gallery */
+.gal{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:clamp(16px,3vw,32px)}
+.gal a{display:block;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#0a0a12;transition:border-color .2s,transform .2s}
+.gal a:hover{border-color:var(--pink);transform:translateY(-3px)}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover}
+.gal figcaption{padding:14px 16px 16px}
+.gal .cap{font:700 18px/1.25 var(--sans);letter-spacing:-.01em}
+.gal .sub{display:block;margin-top:6px;font:500 11px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="word" href="index.html" aria-label="Practicality Co. home">
+      <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 6h12M6 6v12M58 6H46M58 6v12M6 58h12M6 58V46M58 58H46M58 58V46" stroke="#2ee6ff" stroke-width="4" fill="none"/><path d="M32 47 18.6 33.7a8.2 8.2 0 0 1 11.6-11.6L32 23.9l1.8-1.8a8.2 8.2 0 0 1 11.6 11.6z" fill="#ff3ea5"/></svg>
+      PRACTICALITY CO.
+    </a>
+    <a class="label back" href="linkkehub.html">&larr; <span class="long">Back to Linkke hub</span><span class="short">Back</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="s" aria-labelledby="gal-t">
+    <div class="wrap">
+      <div class="sh"><h2 id="gal-t">Gallery<i>.</i></h2><span class="label">Artwork &amp; covers</span></div>
+      <ul class="gal">
+        <li><a href="assets/gallery/willpower-1254.webp" target="_blank" rel="noopener">
+          <figure style="margin:0">
+            <img src="assets/gallery/willpower-400.webp" width="400" height="400" loading="eager" decoding="async" alt="Willpower: Linkke, an anime-style AI idol with long pink pigtails and turquoise eyes, sits with her hands tucked under her legs, staring at a buzzing face-down phone on the table — trying not to pick it up.">
+            <figcaption><span class="cap">Willpower</span><span class="sub">Card 025 「既読スルーできない」 cover draft · AI-assisted</span></figcaption>
+          </figure>
+        <span class="sr"> (opens full size in a new tab)</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="label disc">Linkke is an AI. Her music is made with Suno. Art and copy are made with AI assistance.</p>
+    <p class="label meta"><a href="linkkehub.html">&larr; Linkke hub</a><span class="sep" aria-hidden="true">·</span><a href="index.html">&larr; Practicality Co.</a><span class="sep" aria-hidden="true">·</span><a href="https://x.com/humanvsmachinex" target="_blank" rel="noopener">X @humanvsmachinex<span class="sr"> (opens in a new tab)</span></a><span class="sep" aria-hidden="true">·</span><span>&copy; 2026 Practicality Co.</span></p>
+  </div>
+</footer>
+</body>
+</html>
