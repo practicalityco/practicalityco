@@ -4,7 +4,7 @@ One small JSON file per song. Agents never edit `linkkehub.html`. The `songs` Gi
 
 ## The gate
 
-A song is listed only when `x_post` points at **The Executive's own post on @humanvsmachineX**. The Executive posting a song is his approval (The Executive, 2026-10-13 10:02 MT), so nothing reaches this page that he hasn't released himself. Don't add a file before his post exists.
+A song is listed only when `x_post` points at **the Producer's own post on @humanvsmachineX**. A song posted by the Producer counts as his approval (the Producer, 2026-10-13 10:02 MT), so nothing reaches this page that he hasn't released himself. Don't add a file before his post exists.
 
 ## Add a song
 
@@ -31,7 +31,7 @@ Create `data/songs/<id>.json`. The file name must match `id`.
 | `released` | yes | `YYYY-MM-DD` (Mountain Time) |
 | `x_post` | yes | `https://x.com/humanvsmachineX/status/<id>`. This is the gate. |
 | `suno_url` | no | `https://suno.com/song/<uuid>` or `https://suno.com/s/<code>`, without the `?sh=` part. With it, the title links to Suno ("Play on Suno"); without it, to the X post ("Watch on X"). |
-| `cover` | no | the cover The Executive posted, uploaded to `assets/covers/src/<id>.png` (or .jpg/.webp, up to 8 MB). The Action makes the 400 px thumbnail. |
+| `cover` | no | the cover the Producer posted, uploaded to `assets/covers/src/<id>.png` (or .jpg/.webp, up to 8 MB). The Action makes the 400 px thumbnail. |
 | `cover_alt` | with `cover` | a plain description of the image, up to 600 characters |
 | `hidden` | no | `true` takes the song off the page and keeps the file |
 
@@ -39,7 +39,7 @@ The list is ordered newest first by `released`, then by X post time.
 
 ## Take one down, or stop everything
 
-- **Unpublish:** set `"hidden": true`, or delete the file. The Executive's call ("pull <title>").
+- **Unpublish:** set `"hidden": true`, or delete the file; that's the Producer's call ("pull <title>").
 - **Pause:** add an empty file `data/PAUSE`. The page stays as it is until the file is removed.
 
 ## When something is wrong
