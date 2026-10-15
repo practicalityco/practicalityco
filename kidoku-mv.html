@@ -37,13 +37,15 @@ header .wrap{height:72px}
 .word{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;font:700 14px/1 var(--sans);letter-spacing:.26em;text-decoration:none}
 .back{color:var(--mute);white-space:nowrap;text-decoration:none}
 .back:hover{color:var(--ink)}
-main{display:grid;gap:22px;padding-bottom:64px}
+main{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding-bottom:64px}
 h1{margin:8px 0 0;font:800 clamp(30px,6vw,64px)/1.05 var(--sans);letter-spacing:-.03em;text-wrap:balance}
 h1 i{color:var(--pink);font-style:normal}
 .lede{margin:10px 0 0;color:var(--mute);max-width:62ch}
 
 .viewport{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;max-width:100%;background:#0b0c18;border:1px solid var(--line);touch-action:pan-y;cursor:grab}
-.viewport canvas{display:block;width:100%;height:100%}
+/* the canvas sits out of layout, so its pixel size (2-3x on phones) can never stretch the page */
+.viewport canvas{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:0}
+.viewport>:not(canvas){z-index:1}
 .viewport .hint{position:absolute;left:12px;bottom:10px;font:500 11px/1 var(--mono);color:var(--ink);opacity:.55;pointer-events:none}
 .viewport .now{position:absolute;left:0;right:0;top:14px;text-align:center;font:800 clamp(20px,4.6vw,38px)/1.25 var(--sans);color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.65);pointer-events:none;padding-inline:12px}
 .viewport .now .c{opacity:.45}
@@ -52,8 +54,9 @@ h1 i{color:var(--pink);font-style:normal}
 .viewport .now rt{font-size:.34em;font-weight:500}
 .viewport .sub{position:absolute;left:0;right:0;top:calc(14px + clamp(20px,4.6vw,38px)*1.95);text-align:center;font-size:13px;color:#fff;opacity:.82;pointer-events:none;padding-inline:12px}
 .viewport .err{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center}
-.viewport .bigplay{position:absolute;inset:0;margin:auto;width:max-content;height:max-content;font:700 clamp(16px,2.4vw,22px)/1 var(--sans);padding:20px 30px;border-radius:999px;border:0;background:var(--pink);color:#fff;cursor:pointer;box-shadow:0 8px 40px rgba(255,62,165,.45)}
+.viewport .bigplay{position:absolute;inset:auto 0 13% 0;margin:0 auto;width:max-content;height:max-content;font:700 clamp(16px,2.4vw,22px)/1 var(--sans);padding:20px 30px;border-radius:999px;border:0;background:var(--pink);color:#fff;cursor:pointer;box-shadow:0 8px 40px rgba(255,62,165,.45)}
 .viewport .bigplay:disabled{opacity:.75;cursor:progress}
+.viewport .bigplay.playing{inset:auto 12px 12px auto;margin:0;font:600 13px/1 var(--sans);padding:10px 14px;background:rgba(1,0,6,.62);border:1px solid var(--line-2);box-shadow:none}
 .viewport .countdown{position:absolute;inset:0;display:grid;place-items:center;font:800 min(40vh,40vw)/1 var(--sans);color:#fff;background:#000;pointer-events:none}
 .viewport .countdown[hidden]{display:none}
 .viewport .take{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;font:700 18px/1 var(--sans);padding:18px 26px;border-radius:999px;border:0;background:var(--pink);color:#fff;cursor:pointer}
@@ -104,14 +107,13 @@ html.record .viewport .hint{display:none}
       <div class="now" id="nowLine" lang="ja"></div>
       <div class="sub" id="nowSub"></div>
       <span class="hint" id="hint">Drag to look around</span>
-      <button class="bigplay" id="bigplay" type="button" disabled>Loading…</button>
+      <button class="bigplay" id="bigplay" type="button" aria-pressed="false" disabled>Loading…</button>
       <button class="take" id="take" type="button" hidden disabled>Preparing sound…</button>
       <div class="countdown" id="countdown" hidden>3</div>
     </div>
   </div>
   <div class="wrap"><div class="bar" id="bar"><div class="fill" id="fill"></div><div class="head" id="head"></div></div></div>
   <div class="wrap controls">
-    <button class="cta" id="playBand" type="button" aria-pressed="false" disabled>Loading…</button>
     <span class="status" id="status" role="status"></span>
   </div>
   <div class="wrap about">
@@ -1835,7 +1837,8 @@ html.record .viewport .hint{display:none}
 
   // ---------- drag to look ----------
   let dragAz = 0, dragging = false, lastX = 0, lastDrag = -10;
-  vp.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; vp.setPointerCapture && vp.setPointerCapture(e.pointerId); vp.style.cursor = 'grabbing'; });
+  vp.addEventListener('pointerdown', e => { if (e.target.closest && e.target.closest('button')) return;   // let buttons on the stage get their tap
+    dragging = true; lastX = e.clientX; vp.setPointerCapture && vp.setPointerCapture(e.pointerId); vp.style.cursor = 'grabbing'; });
   vp.addEventListener('pointermove', e => { if (!dragging) return; dragAz -= (e.clientX - lastX) * 0.01; lastX = e.clientX; lastDrag = performance.now() / 1000; });
   const endDrag = () => { dragging = false; vp.style.cursor = ''; };
   vp.addEventListener('pointerup', endDrag); vp.addEventListener('pointercancel', endDrag);
@@ -1847,15 +1850,14 @@ html.record .viewport .hint{display:none}
   const SILENT = location.hash === '#record-silent';
   const tl = S.timeline();
   let audio = null, ctx = null, src = null, t0 = 0;
-  const btnBand = $('playBand'), status = $('status');
+  const btnBand = $('bigplay'), status = $('status');   // the one play/pause button, on the video
   const ready = (r) => {
     audio = r;
     status.textContent = '';
-    btnBand.disabled = false; btnBand.textContent = 'Play with sound';
-    $('bigplay').disabled = false; $('bigplay').textContent = '▶ Play with sound';
+    btnBand.disabled = false; btnBand.textContent = '▶ Play with sound';
     if (RECORD) { $('take').disabled = false; $('take').textContent = 'Start take (1:57, sound on)'; }
   };
-  const progress = (d, n) => { const lbl = `Loading… ${Math.round(d / n * 100)}%`; btnBand.textContent = lbl; $('bigplay').textContent = lbl; };
+  const progress = (d, n) => { btnBand.textContent = `Loading… ${Math.round(d / n * 100)}%`; };
   async function renderHere() { ready(await S.renderAudio(progress)); }
   if (SILENT) { $('take').disabled = false; $('take').textContent = 'Start silent take (3-2-1, then 1:57)'; }
   else try {
@@ -1890,13 +1892,12 @@ html.record .viewport .hint{display:none}
     if (!audio) return;
     if (soundOn) {                                   // pause: hold the frame, stop the sound
       pos = songTime(); const s = src; src = null; soundOn = false; if (s) { try { s.stop(); } catch (e) {} }
-      btnBand.textContent = 'Play with sound'; btnBand.setAttribute('aria-pressed', 'false'); return;
+      btnBand.textContent = '▶ Play with sound'; btnBand.classList.remove('playing'); btnBand.setAttribute('aria-pressed', 'false'); return;
     }
     try { await ensureCtx(); } catch (e) { status.textContent = 'This browser blocked audio: ' + e.message; return; }
     const me = makeSource(true);
     src = me; t0 = ctx.currentTime + 0.05 - pos; me.start(ctx.currentTime + 0.05, pos); soundOn = true; started = true;
-    $('bigplay').hidden = true;
-    btnBand.textContent = 'Pause'; btnBand.setAttribute('aria-pressed', 'true');
+    btnBand.textContent = '❚❚ Pause'; btnBand.classList.add('playing'); btnBand.setAttribute('aria-pressed', 'true');
   }
   async function recordTake() {                      // #record: one clean take from the top, no page around it
     if (SILENT) {
@@ -1911,7 +1912,6 @@ html.record .viewport .hint{display:none}
     const me = makeSource(false); src = me; recordStart = ctx.currentTime + 1.0; me.start(recordStart);
     $('take').hidden = true;
   }
-  $('bigplay').addEventListener('click', soundToggle);
   btnBand.addEventListener('click', soundToggle);
   if (RECORD) { document.documentElement.classList.add('record'); $('take').hidden = false; $('bigplay').hidden = true; $('take').addEventListener('click', recordTake); }
 
