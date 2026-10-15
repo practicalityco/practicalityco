@@ -6,9 +6,9 @@ optionally, a cover image to assets/covers/src/). They never edit HTML. This
 script validates every entry, makes the cover thumbnails, and rewrites only the
 part of linkkehub.html between the songs:start / songs:end markers.
 
-The gate: an entry must point at The executive's own post on X (x_post). The
-executive posting a song is his approval (The executive, 2026-10-13 10:02 MT),
-so nothing reaches this page that he hasn't already released himself.
+The gate: an entry must point at The Executive's own post on X (x_post).
+The Executive posting a song is his approval (The Executive, 2026-10-13
+10:02 MT), so nothing reaches this page that he hasn't already released himself.
 
 Run:  python3 scripts/build_songs.py           (validate + render)
       python3 scripts/build_songs.py --check   (validate only, change nothing)
