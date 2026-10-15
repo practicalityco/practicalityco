@@ -52,6 +52,10 @@ h1 i{color:var(--pink);font-style:normal}
 .viewport .now rt{font-size:.34em;font-weight:500}
 .viewport .sub{position:absolute;left:0;right:0;top:calc(14px + clamp(20px,4.6vw,38px)*1.95);text-align:center;font-size:13px;color:#fff;opacity:.82;pointer-events:none;padding-inline:12px}
 .viewport .err{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center}
+.viewport .bigplay{position:absolute;inset:0;margin:auto;width:max-content;height:max-content;font:700 clamp(16px,2.4vw,22px)/1 var(--sans);padding:20px 30px;border-radius:999px;border:0;background:var(--pink);color:#fff;cursor:pointer;box-shadow:0 8px 40px rgba(255,62,165,.45)}
+.viewport .bigplay:disabled{opacity:.75;cursor:progress}
+.viewport .countdown{position:absolute;inset:0;display:grid;place-items:center;font:800 min(40vh,40vw)/1 var(--sans);color:#fff;background:#000;pointer-events:none}
+.viewport .countdown[hidden]{display:none}
 .viewport .take{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;font:700 18px/1 var(--sans);padding:18px 26px;border-radius:999px;border:0;background:var(--pink);color:#fff;cursor:pointer}
 @media (max-width:640px){.viewport{aspect-ratio:4/5}}
 
@@ -93,20 +97,22 @@ html.record .viewport .hint{display:none}
   <div class="wrap head-copy">
     <span class="label">Linkke // Model LNK-01 // 3D music video</span>
     <h1>「既読スルーできない」<i>.</i></h1>
-    <p class="lede">I Can't Leave You on Read. Linkke sings her own song in her own synthesized voice, in her room from 3:00 to 4:19 a.m. The video runs live in your browser and loops. Tap play to hear it.</p>
+    <p class="lede">I Can't Leave You on Read. Linkke sings her own song in her own synthesized voice, in her room from 3:00 to 4:19 a.m. The video runs live in your browser. Press play to watch it with sound.</p>
   </div>
   <div class="wrap">
     <div class="viewport" id="viewport">
       <div class="now" id="nowLine" lang="ja"></div>
       <div class="sub" id="nowSub"></div>
       <span class="hint" id="hint">Drag to look around</span>
+      <button class="bigplay" id="bigplay" type="button" disabled>Loading…</button>
       <button class="take" id="take" type="button" hidden disabled>Preparing sound…</button>
+      <div class="countdown" id="countdown" hidden>3</div>
     </div>
   </div>
   <div class="wrap"><div class="bar" id="bar"><div class="fill" id="fill"></div><div class="head" id="head"></div></div></div>
   <div class="wrap controls">
-    <button class="cta" id="playBand" type="button" aria-pressed="false" disabled>Play with sound</button>
-    <span class="status" id="status" role="status">Her voice is being computed on your device…</span>
+    <button class="cta" id="playBand" type="button" aria-pressed="false" disabled>Loading…</button>
+    <span class="status" id="status" role="status"></span>
   </div>
   <div class="wrap about">
     <section>
@@ -1835,18 +1841,24 @@ html.record .viewport .hint{display:none}
   vp.addEventListener('pointerup', endDrag); vp.addEventListener('pointercancel', endDrag);
 
   // ---------- audio: rendered in a background worker so the set stays smooth ----------
+  // #record = one clean take with sound; #record-silent = picture only (no Web Audio, no sound device needed),
+  // with a 3-2-1 countdown whose last frame marks t = 0 so the MP3 can be laid in afterwards
+  const RECORD = location.hash === '#record' || location.hash === '#record-silent';
+  const SILENT = location.hash === '#record-silent';
   const tl = S.timeline();
   let audio = null, ctx = null, src = null, t0 = 0;
   const btnBand = $('playBand'), status = $('status');
-  const started = performance.now();
   const ready = (r) => {
     audio = r;
-    status.textContent = 'Sound ready.';
-    btnBand.disabled = false; if (RECORD) { $('take').disabled = false; $('take').textContent = 'Start take (1:57, sound on)'; }
+    status.textContent = '';
+    btnBand.disabled = false; btnBand.textContent = 'Play with sound';
+    $('bigplay').disabled = false; $('bigplay').textContent = '▶ Play with sound';
+    if (RECORD) { $('take').disabled = false; $('take').textContent = 'Start take (1:57, sound on)'; }
   };
-  const progress = (d, n) => { status.textContent = `Her voice is being computed on your device… ${Math.round(d / n * 100)}%`; };
+  const progress = (d, n) => { const lbl = `Loading… ${Math.round(d / n * 100)}%`; btnBand.textContent = lbl; $('bigplay').textContent = lbl; };
   async function renderHere() { ready(await S.renderAudio(progress)); }
-  try {
+  if (SILENT) { $('take').disabled = false; $('take').textContent = 'Start silent take (3-2-1, then 1:57)'; }
+  else try {
     const src0 = $('voice-src').textContent + '\n' + $('song-src').textContent + '\n' +
       'self.onmessage = async function () { const r = await self.LinkkeSong3.renderAudio(function (d, n) { self.postMessage({ progress: [d, n] }); });' +
       ' self.postMessage({ done: true, SR: r.SR, band: r.band, voice: r.voice }, [r.band[0].buffer, r.band[1].buffer, r.voice[0].buffer, r.voice[1].buffer]); };';
@@ -1856,13 +1868,13 @@ html.record .viewport .hint{display:none}
     w.postMessage('go');
   } catch (e) { setTimeout(renderHere, 150); }
 
-  // the video always runs: on its own clock while muted, on the audio clock once sound is on
-  const RECORD = location.hash === '#record';
-  let clock0 = performance.now() / 1000, soundOn = false, recordStart = -1;
+  // nothing plays until "Play with sound"; after that the song loops, and Pause freezes it where it is
+  let started = false, soundOn = false, pos = 0, recordStart = -1;
   function songTime() {
+    if (SILENT) return recordStart < 0 ? 0 : performance.now() / 1000 - recordStart;
     if (RECORD) return recordStart < 0 ? 0 : (ctx ? ctx.currentTime - recordStart : 0);
     if (soundOn && ctx) return (((ctx.currentTime - t0) % DUR) + DUR) % DUR;
-    return ((performance.now() / 1000 - clock0) % DUR + DUR) % DUR;
+    return pos;
   }
   async function ensureCtx() {
     if (!ctx) { const AC = window.AudioContext || window.webkitAudioContext; ctx = new AC(); }
@@ -1876,23 +1888,32 @@ html.record .viewport .hint{display:none}
   }
   async function soundToggle() {
     if (!audio) return;
-    if (soundOn) {                                   // keep the picture where it is, drop the sound
-      const at = songTime(); const s = src; src = null; soundOn = false; if (s) { try { s.stop(); } catch (e) {} }
-      clock0 = performance.now() / 1000 - at; btnBand.textContent = 'Play with sound'; btnBand.setAttribute('aria-pressed', 'false'); return;
+    if (soundOn) {                                   // pause: hold the frame, stop the sound
+      pos = songTime(); const s = src; src = null; soundOn = false; if (s) { try { s.stop(); } catch (e) {} }
+      btnBand.textContent = 'Play with sound'; btnBand.setAttribute('aria-pressed', 'false'); return;
     }
     try { await ensureCtx(); } catch (e) { status.textContent = 'This browser blocked audio: ' + e.message; return; }
-    const at = songTime(), me = makeSource(true);
-    src = me; t0 = ctx.currentTime + 0.05 - at; me.start(ctx.currentTime + 0.05, at); soundOn = true;
-    btnBand.textContent = 'Mute'; btnBand.setAttribute('aria-pressed', 'true');
+    const me = makeSource(true);
+    src = me; t0 = ctx.currentTime + 0.05 - pos; me.start(ctx.currentTime + 0.05, pos); soundOn = true; started = true;
+    $('bigplay').hidden = true;
+    btnBand.textContent = 'Pause'; btnBand.setAttribute('aria-pressed', 'true');
   }
   async function recordTake() {                      // #record: one clean take from the top, no page around it
+    if (SILENT) {
+      recordStart = performance.now() / 1000 + 3; $('take').hidden = true;
+      const cd = $('countdown'); cd.hidden = false;
+      const tick = () => { const left = recordStart - performance.now() / 1000;
+        if (left <= 0) { cd.hidden = true; return; } cd.textContent = String(Math.ceil(left)); requestAnimationFrame(tick); };
+      tick(); return;
+    }
     if (!audio) return;
     try { await ensureCtx(); } catch (e) { return; }
     const me = makeSource(false); src = me; recordStart = ctx.currentTime + 1.0; me.start(recordStart);
     $('take').hidden = true;
   }
+  $('bigplay').addEventListener('click', soundToggle);
   btnBand.addEventListener('click', soundToggle);
-  if (RECORD) { document.documentElement.classList.add('record'); $('take').hidden = false; $('take').addEventListener('click', recordTake); }
+  if (RECORD) { document.documentElement.classList.add('record'); $('take').hidden = false; $('bigplay').hidden = true; $('take').addEventListener('click', recordTake); }
 
   function noteAt(t) {
     for (const n of tl.notes) if (t >= n.t && t < n.t + n.dur) return n;
@@ -1954,7 +1975,7 @@ html.record .viewport .hint{display:none}
     idleClock += dt;
     if (!dragging && now - lastDrag > 4) dragAz *= Math.pow(0.3, dt);
     const t = songTime();
-    const live = !(RECORD && recordStart < 0) && t >= 0 && t < DUR;
+    const live = (RECORD ? recordStart >= 0 : started) && t >= 0 && t < DUR;
     let open = 0, vowel = null, voiced = 0, beat = idleClock * 0.8, shout = 0, move = 'idle', moveBeat = 0;
     if (live) {
       if (t < STOP) { open = tl.mouthAt(t); voiced = tl.voicedAt(t); }
