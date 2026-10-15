@@ -1931,7 +1931,9 @@ html.record .viewport .hint{display:none}
     let wantPos, wantTgt;
     if (s.phone) {
       const ph = set.phone.position, ry = set.phone.rotation.y;
-      wantTgt = V3(ph.x, 1.85, ph.z); wantPos = V3(ph.x + Math.sin(ry) * s.k - 0.6, 2.0, ph.z + Math.cos(ry) * s.k);
+      const half = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));     // fit the whole phone (3 tall, 1.6 wide) with a margin, at any aspect
+      const k = Math.max(3.8 / (2 * half), 2.5 / (2 * half * camera.aspect)) * (s.k > 3 ? 1.1 : 1);
+      wantTgt = V3(ph.x, 1.75, ph.z); wantPos = V3(ph.x + Math.sin(ry) * k - 0.3, 1.9, ph.z + Math.cos(ry) * k);
     } else {
       const a = s.az + dragAz;
       wantTgt = s.target; wantPos = V3(s.target.x + Math.sin(a) * s.dist, s.target.y + s.h, s.target.z + Math.cos(a) * s.dist);
