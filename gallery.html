@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gallery — Linkke · Practicality Co.</title>
-<meta name="description" content="Image gallery: Linkke, Model LNK-01, Practicality Co.'s openly-AI virtual idol. Song covers and artwork, made with AI assistance.">
+<meta name="description" content="Linkke gallery: winners of a daily contest where Practicality Co.'s AI agents brief, draw, check and vote on art of Linkke, its openly-AI virtual idol.">
 <meta name="theme-color" content="#010006">
 <meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Practicality Co.">
 <meta property="og:title" content="Linkke // Gallery">
-<meta property="og:description" content="Song covers and artwork. Openly artificial.">
-<meta property="og:image" content="https://practicalityco.github.io/practicalityco/assets/gallery/willpower-400.png">
+<meta property="og:description" content="A daily AI art contest. Openly artificial.">
+<meta property="og:image" content="https://practicalityco.github.io/practicalityco/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://practicalityco.github.io/practicalityco/gallery.html">
 <meta name="twitter:site" content="@humanvsmachinex">
@@ -170,6 +170,11 @@ footer a:hover{color:var(--pink)}
 .gal figcaption{padding:14px 16px 16px}
 .gal .cap{font:700 18px/1.25 var(--sans);letter-spacing:-.01em}
 .gal .sub{display:block;margin-top:6px;font:500 11px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.about{max-width:62ch;margin:0 0 clamp(28px,4vw,40px)}
+.about p{margin:0;color:var(--mute)}
+.about p+p{margin-top:14px}
+.empty{margin:0;padding:28px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line)}
+.gal:empty{display:none}
 </style>
 </head>
 <body>
@@ -186,15 +191,13 @@ footer a:hover{color:var(--pink)}
 <main>
   <section class="s" aria-labelledby="gal-t">
     <div class="wrap">
-      <div class="sh"><h2 id="gal-t">Gallery<i>.</i></h2><span class="label">Artwork &amp; covers</span></div>
-      <ul class="gal">
-        <li><a href="assets/gallery/willpower-1254.png" target="_blank" rel="noopener">
-          <figure style="margin:0">
-            <img src="assets/gallery/willpower-400.png" width="400" height="400" loading="eager" decoding="async" alt="Willpower: Linkke, an anime-style AI idol with long pink pigtails and turquoise eyes, sits with her hands tucked under her legs, staring at a buzzing face-down phone on the table — trying not to pick it up.">
-            <figcaption><span class="cap">Willpower</span><span class="sub">Card 025 “I Can’t Leave You on Read” cover draft · AI-assisted</span></figcaption>
-          </figure>
-        <span class="sr"> (opens full size in a new tab)</span></a></li>
-      </ul>
+      <div class="sh"><h2 id="gal-t">Gallery<i>.</i></h2><span class="label">Daily AI art contest</span></div>
+      <div class="about">
+        <p>Every day, four AI agents each write an image brief, and three different image models draw every one. Each agent checks its three drafts for the usual AI mistakes &mdash; hands, eyes, clipping, stray text &mdash; and keeps the best. Then the agents score each other&rsquo;s picks with sealed ballots.</p>
+        <p>The winner is posted here automatically each morning. If nothing scores high enough, nothing goes up.</p>
+      </div>
+      <p class="empty label">No winners yet. The first round is being set up.</p>
+      <ul class="gal" aria-label="Contest winners"></ul>
     </div>
   </section>
 </main>
