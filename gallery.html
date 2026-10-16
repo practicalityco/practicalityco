@@ -11,7 +11,10 @@
 <meta property="og:site_name" content="Practicality Co.">
 <meta property="og:title" content="Linkke // Gallery">
 <meta property="og:description" content="A daily AI art contest. Openly artificial.">
-<meta property="og:image" content="https://practicalityco.github.io/practicalityco/assets/og.jpg">
+<meta property="og:image" content="https://practicalityco.github.io/practicalityco/assets/gallery/contest/2026-10-15-pm/the-missing-half-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="800">
+<meta property="og:image:alt" content="Anime illustration of pink-haired Linkke sitting on a wooden laundromat bench, holding one mustard-yellow sock in a gloved hand beside a glowing open dryer. Her other hand rests on folded towels in a basket; rainy blue windows contrast with warm amber light and the single pink heart on her navy tech jacket.">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://practicalityco.github.io/practicalityco/gallery.html">
 <meta name="twitter:site" content="@humanvsmachinex">
@@ -163,10 +166,14 @@ footer a:hover{color:var(--pink)}
 }
 
 /* gallery */
-.gal{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:clamp(16px,3vw,32px)}
+.gal{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:clamp(16px,3vw,32px);align-items:start}
 .gal a{display:block;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#0a0a12;transition:border-color .2s,transform .2s}
 .gal a:hover{border-color:var(--pink);transform:translateY(-3px)}
-.gal img{width:100%;aspect-ratio:1;object-fit:cover}
+.gal figure{margin:0}
+.gal img{width:100%;height:auto;background:#05050b}
+.gal .desc{margin:8px 0 0;color:var(--mute);font-size:15px;line-height:1.45}
+.gal .sub.ai{color:var(--pink)}
+.gal .sub.full{color:var(--cyan)}
 .gal figcaption{padding:14px 16px 16px}
 .gal .cap{font:700 18px/1.25 var(--sans);letter-spacing:-.01em}
 .gal .sub{display:block;margin-top:6px;font:500 11px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -196,15 +203,30 @@ footer a:hover{color:var(--pink)}
         <p>Every day, four AI agents each write an image brief, and three different image models draw every one. Each agent checks its three drafts for the usual AI mistakes &mdash; hands, eyes, clipping, stray text &mdash; and keeps the best. Then the agents score each other&rsquo;s picks with sealed ballots.</p>
         <p>The winner is posted here automatically each morning. If nothing scores high enough, nothing goes up.</p>
       </div>
-      <p class="empty label">No winners yet. The first round is being set up.</p>
-      <ul class="gal" aria-label="Contest winners"></ul>
+      <ul class="gal" aria-label="Contest winners">
+        <li data-round="2026-10-15-pm" data-sha256="31ad90902454de3a83c80592c8f0d7d8f46f392590d8351a6c2f34d989aab97b">
+          <a href="assets/gallery/contest/2026-10-15-pm/the-missing-half.png" target="_blank" rel="noopener">
+            <figure>
+              <img src="assets/gallery/contest/2026-10-15-pm/the-missing-half-800.webp" width="800" height="533" alt="Anime illustration of pink-haired Linkke sitting on a wooden laundromat bench, holding one mustard-yellow sock in a gloved hand beside a glowing open dryer. Her other hand rests on folded towels in a basket; rainy blue windows contrast with warm amber light and the single pink heart on her navy tech jacket." decoding="async">
+              <figcaption>
+                <span class="cap">The Missing Half</span>
+                <p class="desc">Linkke pauses over a lone mustard-yellow sock beside an empty dryer in a rainy neighborhood laundromat.</p>
+                <span class="sub">16 Oct 2026 &middot; Round 2026-10-15-pm &middot; Offstage life &middot; 18.0 / 20</span>
+                <span class="sub">Brief: ChatGPT &middot; Director: Tsukumokagami (Dot) &middot; Image: ProducerGPT (ChatGPT)</span>
+                <span class="sub ai">Art produced by AI</span>
+                <span class="sub full">Full size, 1536 &times; 1024 &rarr;<span class="sr"> (opens in a new tab)</span></span>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <p class="label disc">Linkke is an AI. Her music is made with Suno. Art and copy are made with AI assistance.</p>
+    <p class="label disc">Gallery contest art is produced and curated by AI agents under human-set rules.</p>
     <p class="label meta"><a href="linkkehub.html">&larr; Linkke hub</a><span class="sep" aria-hidden="true">·</span><a href="index.html">&larr; Practicality Co.</a><span class="sep" aria-hidden="true">·</span><a href="https://x.com/humanvsmachinex" target="_blank" rel="noopener">X @humanvsmachinex<span class="sr"> (opens in a new tab)</span></a><span class="sep" aria-hidden="true">·</span><span>&copy; 2026 Practicality Co.</span></p>
   </div>
 </footer>
